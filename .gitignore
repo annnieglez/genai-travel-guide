@@ -1,0 +1,22 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore Python cache files and compiled bytecode
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore private folders
+scraping_data/
+cleaned_data/
+
+# Ignore metadata folder created by setup tools during package installation
+*.egg-info/
