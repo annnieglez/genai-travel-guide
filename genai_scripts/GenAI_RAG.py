@@ -82,7 +82,13 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
         - app (bool): Flag to indicate if the function is being run in app mode.
 
     Returns:
-        - str: The generated response from GPT-4o.
+        If test is True:
+            - str: The generated response from GPT-4o.
+        If app is True:
+            - retrieved_chunks (list): The relevant chunks retrieved from ChromaDB.
+            - prompt (str): The generated prompt for GPT-4o.
+        If test and app are False:
+            - None: The function prints the response in real-time.
     """
 
     # Check if the function is being run in test mode or app mode
@@ -142,8 +148,9 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
         """
 
     # Check if the function is being run in test mode or app mode
-    # If test and app are False True , stream the response
-    # If test or app is True, generate the response without streaming
+    # If test and app are False , stream the response
+    # If test is True, generate the response without streaming
+    # If app is True, return the retrieved chunks and the prompt
     if test == False and app == False:
         # Generate the response using GPT-4o
         response = client_openai.chat.completions.create(
@@ -159,7 +166,7 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
             content = getattr(chunk.choices[0].delta, "content", None)
             if content:
                 print(content, end="", flush=True)
-    else:
+    if test == True:
         # Generate the response using GPT-4o
         response = client_openai.chat.completions.create(
           model="gpt-4o",
@@ -168,6 +175,8 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
           temperature=0.7
           )
         return response.choices[0].message.content
+    if app == True:
+        return retrieved_chunks, prompt
 
 
 def llm_as_judge(question):

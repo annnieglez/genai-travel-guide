@@ -17,7 +17,7 @@ The data used for this project includes:
 
 - **Travel Guides**: Publicly available travel guides about Iceland.
 - **Tourism Websites**: Information from Icelandic tourism websites.
-- **MGTripPLanner**: Iceland on a budget information.
+- **MG Trip PLanner**: Iceland on a budget information.
 - **Custom Data**: Curated datasets collected via paid APIs (not included in the repository due to privacy concerns).
 
 The data was preprocessed and cleaned using the `data_cleaning.ipynb` notebook, and document chunks were created using the `chunks.ipynb` notebook. These notebooks are included for reference but can not be run, since they need the curated dataset collected via paid APIs.
@@ -30,6 +30,10 @@ Below is the project structure with a brief explanation of each component:
 genai-travel-guide/
 ├── app/
 │   ├── images/                            # Static assets like images or icons for the app
+│   ├── _pages/                            # Directory containing the main page components of the app
+│   │   ├── about.py                       # About page of the app
+│   │   ├── chat.py                        # Chat interface for user interactions
+│   │   └── home.py                        # Home page of the app
 │   └── app.py                             # Main Streamlit app for user interaction
 ├── chroma_db/
 │   ├── chromas.sqlite3                    # SQLite database for storing document embeddings
@@ -150,7 +154,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Author
 
-This project was created by Annie Meneses Gonzalez. Feel free to connect with me on [LinkedIn](www.linkedin.com/in/annie-meneses-gonzalez-57bb9b145).
+This project was created by Annie Meneses Gonzalez. Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/annie-meneses-gonzalez-57bb9b145/).
 
 ---
 
