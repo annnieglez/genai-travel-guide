@@ -8,7 +8,7 @@ This project is an AI-powered chatbot that provides real-time travel advice abou
 
 - **ChromaDB for Embeddings**: Stores and retrieves document embeddings  (OpenAI's `text-embedding-3-large`) for relevant travel insights.
 - **Streamlit**: Provides a user-friendly interface for travelers to ask questions.
-- **AI-Powered Responses**: Uses an LLM (OpenAI's `gpt-4o`) to generate accurate and meaningful travel answers.
+- **AI-Powered Responses**: Uses an LLM ([OpenAI's](https://platform.openai.com/api-keys) `gpt-4o`) to generate accurate and meaningful travel answers.
 - **Performance Evaluation**: Responses were tested using an LLM as a judge, with a **9/10** accuracy rating being the most common score.
 
 ## Data Sources
