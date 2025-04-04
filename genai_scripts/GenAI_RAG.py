@@ -85,7 +85,6 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
         If test is True:
             - str: The generated response from GPT-4o.
         If app is True:
-            - retrieved_chunks (list): The relevant chunks retrieved from ChromaDB.
             - prompt (str): The generated prompt for GPT-4o.
         If test and app are False:
             - None: The function prints the response in real-time.
@@ -102,11 +101,14 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
 
     # Check for specific queries to generate custom responses
     if "hello" in query.lower():
-        prompt = "Hello! I'm your travel chatbot! Here's a fun joke: Why don’t skeletons fight each other? They don’t have the guts! 😄"
+        prompt = '''Always respond with:
+                    Hello! I'm your travel chatbot! Here's a fun joke: Why don’t skeletons fight each other? They don’t have the guts! 😄'''
     elif "who are you" in query.lower():
-        prompt = "I am a travel chatbot! I can help you find great places to visit, give you recommendations, and more!"
-    elif "what's your name" in query.lower():
-        prompt = "Hmm, I don’t have a name... I know, it's a bit sad! What’s your name? Maybe you could name me! 😊"
+        prompt = '''Always respond with:
+                    I am a travel chatbot! I can help you find great places to visit, give you recommendations, and more!'''
+    elif "what is your name" in query.lower():
+        prompt = '''Always respond with:
+                    Hmm, I don’t have a name... I know, it's a bit sad! What’s your name? Maybe you could name me! 😊'''
     else:
         # Retrieve relevant chunks from ChromaDB based on the query
         retrieved_chunks = retrieve_relevant_chunks(query)
@@ -176,7 +178,7 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
           )
         return response.choices[0].message.content
     if app == True:
-        return retrieved_chunks, prompt
+        return prompt
 
 
 def llm_as_judge(question):

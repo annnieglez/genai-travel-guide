@@ -13,9 +13,6 @@ import os
 # OpenAI Libraries
 import openai
 
-if "openai_model" not in st.session_state:
-    st.session_state.openai_model = "gpt-4o"
-
 # Custom Libraries
 from genai_scripts import GenAI_RAG as rag
 
@@ -30,6 +27,8 @@ def chat_page():
     This function creates the chat page for the Iceland Travel AI Assistant.
     It initializes the Streamlit app, sets up the layout, and handles user interactions.
     """
+    if "openai_model" not in st.session_state:
+        st.session_state.openai_model = "gpt-4o"
  
     col1, col2, col3 = st.columns([2.5,3,2])
     with col2:  
@@ -57,7 +56,7 @@ def chat_page():
     if query:
 
         # Call the RAG model to generate a response
-        retrieved_chunks, prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True)
+        prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True)
 
         # Add user message to the chat
         with st.chat_message(name = "user"):
