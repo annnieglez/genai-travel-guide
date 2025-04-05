@@ -55,6 +55,14 @@ def home_page():
     and retrieving relevant information to generate responses using a **Large Language Model (LLM)**.
     """)
 
+    st.markdown("""
+        <div style='text-align: center; margin-top: 30px;'>
+            <a href='https://github.com/annnieglez/genai-travel-guide' target='_blank' style='font-size: 20px; color: #1f77b4; font-weight: bold;'>
+                🔗 Check out the full project on GitHub
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.header("🚀 Features")
     st.write("""
     - **ChromaDB for Embeddings**: Stores and retrieves document embeddings (OpenAI's `text-embedding-3-large`) for relevant travel insights.

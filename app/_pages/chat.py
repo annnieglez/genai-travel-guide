@@ -13,23 +13,23 @@ import os
 # OpenAI Libraries
 import openai
 
-if "openai_model" not in st.session_state:
-    st.session_state.openai_model = "gpt-4o"
-
 # Custom Libraries
 from genai_scripts import GenAI_RAG as rag
 
-# Load environment variables from the .env file
-from dotenv import load_dotenv
-load_dotenv()
-client_openai = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Content for the Home page
-def chat_page():
+def chat_page(api_key):
     """
     This function creates the chat page for the Iceland Travel AI Assistant.
     It initializes the Streamlit app, sets up the layout, and handles user interactions.
     """
+
+    # Set the api key
+    client_openai = openai.OpenAI(api_key=api_key)
+
+    # Set the mode to "chat"
+    if "openai_model" not in st.session_state:
+        st.session_state.openai_model = "gpt-4o"
  
     col1, col2, col3 = st.columns([2.5,3,2])
     with col2:  
@@ -57,7 +57,7 @@ def chat_page():
     if query:
 
         # Call the RAG model to generate a response
-        retrieved_chunks, prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True)
+        prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True)
 
         # Add user message to the chat
         with st.chat_message(name = "user"):
