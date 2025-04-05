@@ -15,7 +15,8 @@ import openai
 
 # Custom Libraries
 from genai_scripts import GenAI_RAG as rag
-
+import sys
+sys.path.append('../../genai_scripts')
 
 # Content for the Home page
 def chat_page(api_key):
