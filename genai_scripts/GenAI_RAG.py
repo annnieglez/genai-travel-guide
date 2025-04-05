@@ -14,7 +14,10 @@ from dotenv import load_dotenv
 
 # Load environment variables from the .env file
 load_dotenv()
-client_openai = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+api_key = os.getenv("OPENAI_API_KEY")
+if api_key is None:
+     api_key = ""
+client_openai = openai.OpenAI(api_key=api_key)
 
 # Custom Libraries
 from genai_scripts import data_storage as ds  
