@@ -13,7 +13,7 @@ import os
 import pandas as pd 
 
 # OpenAI Library
-from openai import OpenAI 
+import openai
 
 # ChromaDB Library
 import chromadb  
@@ -27,10 +27,10 @@ from langchain_community.document_loaders import PyPDFLoader
 
 # Load environment variables from .env file
 load_dotenv()  
-api_key = os.getenv("OPENAI_API_KEY") 
+api_key = os.getenv("OPENAI_API_KEY")
 if api_key is None:
      api_key = ""
-user = OpenAI(api_key=api_key)
+user = openai.OpenAI(api_key=api_key)
 
 # ChromaDB Setup
 folder_db = "..\chroma_db" 

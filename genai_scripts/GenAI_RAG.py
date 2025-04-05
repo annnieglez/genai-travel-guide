@@ -100,7 +100,6 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
         query = input("Enter your query: ") 
     else:
         query = question
-        print(f"Query: {query}")
 
     # Check for specific queries to generate custom responses
     if "hello" in query.lower():
