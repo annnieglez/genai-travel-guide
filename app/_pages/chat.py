@@ -13,9 +13,6 @@ import os
 # OpenAI Libraries
 import openai
 
-import sys
-sys.path.append('..\..\genai_scripts')
-
 # Custom Libraries
 from genai_scripts import GenAI_RAG as rag
 
