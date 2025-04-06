@@ -22,7 +22,7 @@ if api_key is None:
 from genai_scripts import data_storage as ds  
 
 #  ChromaDB setup
-folder_db = "../chroma_db"
+folder_db = "./chroma_db"
 client = chromadb.PersistentClient(path=folder_db)
 collection = client.get_collection(name="csv_embeddings")
 
