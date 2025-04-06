@@ -1,4 +1,13 @@
 from setuptools import setup, find_packages
+import sys
+import platform
+
+
+
+def install_sqlite():
+
+    if platform.system() == "Linux":
+        sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 setup(
     name="iceland_travel_guide",
