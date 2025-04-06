@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 from langchain.text_splitter import RecursiveCharacterTextSplitter  
 from langchain_community.document_loaders import PyPDFLoader 
 
-# Load environment variables from .env file
+# Load environment variables from .env
 load_dotenv()  
 api_key = os.getenv("OPENAI_API_KEY")
 if api_key is None:
@@ -165,7 +165,7 @@ def generate_embedding(text, api_key=api_key):
     Returns:
         - list: The generated embedding.
     """
-    
+
     user = openai.OpenAI(api_key=api_key)
     # Check if the text is from the cvs or pdf file
     # and calculate the length accordingly.
