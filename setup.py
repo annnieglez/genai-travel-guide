@@ -9,6 +9,8 @@ def install_sqlite():
     if platform.system() == "Linux":
         sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+install_sqlite()
+
 setup(
     name="iceland_travel_guide",
     version="0.1",
