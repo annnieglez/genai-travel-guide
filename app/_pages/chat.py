@@ -57,7 +57,7 @@ def chat_page(api_key):
     if query:
 
         # Call the RAG model to generate a response
-        prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True)
+        prompt = rag.generate_response_from_gpt4o(test = False, question = query, app = True, api_key = api_key)
 
         # Add user message to the chat
         with st.chat_message(name = "user"):

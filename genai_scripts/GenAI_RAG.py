@@ -17,7 +17,6 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 if api_key is None:
      api_key = ""
-client_openai = openai.OpenAI(api_key=api_key)
 
 # Custom Libraries
 from genai_scripts import data_storage as ds  
@@ -39,7 +38,7 @@ except FileNotFoundError:
 # GenAi Functions
 # ==============================
 
-def retrieve_relevant_chunks(query, top_k=10):
+def retrieve_relevant_chunks(query, top_k=10, api_key=api_key):
     """
     Retrieve the most relevant chunks from ChromaDB based on query
 
@@ -57,7 +56,7 @@ def retrieve_relevant_chunks(query, top_k=10):
         query_embedding = query_cache[query]
     else:
         # If not cached, generate a new embedding and cache it
-        query_embedding = ds.generate_embedding(query)
+        query_embedding = ds.generate_embedding(query, api_key)
         query_cache[query] = query_embedding
 
         # Save the cache to file
@@ -75,7 +74,7 @@ def retrieve_relevant_chunks(query, top_k=10):
 
     return retrieved_chunks
 
-def generate_response_from_gpt4o(test = False, question = None, app = False):
+def generate_response_from_gpt4o(test = False, question = None, app = False, api_key = api_key):
     """
     Generate a response from GPT-4o based on user input and retrieved chunks from ChromaDB.
 
@@ -113,7 +112,7 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
                     Hmm, I don’t have a name... I know, it's a bit sad! What’s your name? Maybe you could name me! 😊'''
     else:
         # Retrieve relevant chunks from ChromaDB based on the query
-        retrieved_chunks = retrieve_relevant_chunks(query)
+        retrieved_chunks = retrieve_relevant_chunks(query, 10, api_key)
 
         # Format the retrieved chunks for the prompt
         context = "\n\n".join(retrieved_chunks)  # Format retrieved chunks
@@ -150,7 +149,10 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
 
         {query}
         """
-
+    
+    # Initialize the OpenAI client with the provided API key
+    client_openai = openai.OpenAI(api_key=api_key)
+    
     # Check if the function is being run in test mode or app mode
     # If test and app are False , stream the response
     # If test is True, generate the response without streaming
@@ -183,7 +185,7 @@ def generate_response_from_gpt4o(test = False, question = None, app = False):
         return prompt
 
 
-def llm_as_judge(question):
+def llm_as_judge(question, api_key=api_key):
     """
     Evaluate the quality of the AI's answer using GPT-4o as a judge.
 
@@ -195,6 +197,9 @@ def llm_as_judge(question):
     Returns:
         - str: The evaluation result from the judge.
     """
+
+    # Initialize the OpenAI client with the provided API key
+    client_openai = openai.OpenAI(api_key=api_key)
 
     # Retrieve relevant chunks from ChromaDB based on the question
     retrieved_chunks = retrieve_relevant_chunks(question)

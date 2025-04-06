@@ -30,7 +30,7 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 if api_key is None:
      api_key = ""
-user = openai.OpenAI(api_key=api_key)
+
 
 # ChromaDB Setup
 folder_db = "..\chroma_db" 
@@ -155,7 +155,7 @@ def chunk_dataframe(dataframe, size, overlap):
 
     return text_splitter.split_text(text)
 
-def generate_embedding(text):
+def generate_embedding(text, api_key=api_key):
     """
     Generates an embedding for the given text using OpenAI's API."
 
@@ -165,7 +165,8 @@ def generate_embedding(text):
     Returns:
         - list: The generated embedding.
     """
-
+    
+    user = openai.OpenAI(api_key=api_key)
     # Check if the text is from the cvs or pdf file
     # and calculate the length accordingly.
     if hasattr(text, 'page_content'):
