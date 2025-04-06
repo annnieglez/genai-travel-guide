@@ -35,7 +35,7 @@ def install_sqlite(version="3.35.4"):
         subprocess.check_call(['wget', download_url])
         subprocess.check_call(['tar', '-xzf', f"sqlite-autoconf-3350400.tar.gz"])
         os.chdir(f"sqlite-autoconf-3350400")
-        subprocess.check_call(['./configure'])
+        subprocess.check_call(['./configure --prefix=$HOME/sqlite'])
         subprocess.check_call(['make'])
         subprocess.check_call(['sudo', 'make', 'install'])
 
