@@ -334,4 +334,3 @@ yt-dlp==2025.3.31
 zipp==3.21.0
 zstandard==0.23.0
 -e .
-sqlite >= 3.35.0
