@@ -5,9 +5,9 @@ import platform
 
 
 def install_sqlite():
-
-    if platform.system() == "Linux":
-        sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+    if os.environ['pysqlite3']:
+        if platform.system() == "Linux":
+            sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 install_sqlite()
 
