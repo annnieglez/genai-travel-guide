@@ -22,12 +22,16 @@ if api_key is None:
 from genai_scripts import data_storage as ds  
 
 #  ChromaDB setup
-folder_db = "./chroma_db"
+script_dir = os.path.dirname(os.path.realpath(__file__))
+folder_db = os.path.join(script_dir, "..", "chroma_db")
+#folder_db = "./chroma_db"
 client = chromadb.PersistentClient(path=folder_db)
 collection = client.get_collection(name="csv_embeddings")
 
 # Cached embeddings (for faster retrieval)
-cache_file = "../chroma_db/query_embeddings_cache.pkl"
+#cache_file = "../chroma_db/query_embeddings_cache.pkl"
+cache_file = os.path.join(script_dir, "..", "chroma_db", "query_embeddings_cache.pkl")
+
 try:
   with open(cache_file, "rb") as f:
           query_cache = pickle.load(f)
