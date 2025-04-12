@@ -1,2 +1,0 @@
-sqlite3>=3.35.5  
-libsqlite3-dev

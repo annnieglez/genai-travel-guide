@@ -6,6 +6,11 @@
 # Standard Libraries
 import pickle 
 import os
+import sys
+import importlib
+
+# Override default sqlite3 with the one from pysqlite3-binary
+sys.modules["sqlite3"] = importlib.import_module("pysqlite3")
 
 # External Libraries
 import chromadb 
