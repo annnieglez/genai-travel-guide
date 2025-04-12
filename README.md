@@ -1,5 +1,7 @@
 # Iceland Travel AI Assistant ✈️
 
+![Deployed App Screenshot](./images/app_screenshot.png)
+
 ## Overview
 
 This project is an AI-powered chatbot that provides real-time travel advice about Iceland. It utilizes **Retrieval-Augmented Generation (RAG)** by storing document embeddings in **ChromaDB** and retrieving relevant information to generate responses using a **Large Language Model (LLM)**.
@@ -124,15 +126,7 @@ streamlit run app.py
 
 Ensure you are inside the `app` folder for correct retrieval of the ChromaDB database.
 
-## Usage
-
-1. Run the Streamlit app in your browser.
-
-```bash
-streamlit run app.py
-```
-
-Alternatively, you can run the retrieval system directly from the `GENAI_RAG.ipynb` notebook for testing and experimentation.
+Alternatively, you can run the retrieval system directly from the `GENAI_RAG.ipynb` notebook for testing and experimentation, or you can access the deployed app directly at [Iceland Travel AI Assistant](https://genai-chatbot-rag-travel-iceland.streamlit.app).
 
 ## Conclusion
 
