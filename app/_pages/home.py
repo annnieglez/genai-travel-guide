@@ -2,6 +2,7 @@
 
 # Import necessary libraries
 import streamlit as st
+import os
 
 # Content for the About page
 def home_page():
@@ -40,7 +41,9 @@ def home_page():
     col1, col2, col3 = st.columns([6.2,4,4])
     with col2:  
         # Logo
-        st.image("./images/mg-trip-planner-logo.png", width=200)
+        #st.image("./images/mg-trip-planner-logo.png", width=200)
+        logo_path = os.path.join(os.path.dirname(__file__), "..", "images", "mg-trip-planner-logo.png")
+        st.image(logo_path, width=200)
 
     # Hero Section
     st.markdown('<div class="title">Welcome to the Iceland Travel AI Assistant! </div>', unsafe_allow_html=True)

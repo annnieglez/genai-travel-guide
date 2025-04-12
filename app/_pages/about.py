@@ -2,6 +2,7 @@
 
 # Import necessary libraries
 import streamlit as st
+import os
 
 # Content for the About page
 def about_page():
@@ -42,7 +43,9 @@ def about_page():
     col1, col2, col3 = st.columns([2, 4, 2])
     with col2:  
         # Video of Vestrahorn
-        video_file = open("./images/iceland.mov", "rb")
+        video_path = os.path.join(os.path.dirname(__file__), "..", "images", "iceland.mov")
+        video_file = open(video_path, "rb")
+        #video_file = open("./images/iceland.mov", "rb")
         video_bytes = video_file.read()
         st.video(video_bytes)
 
