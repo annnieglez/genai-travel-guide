@@ -1,4 +1,4 @@
-# Iceland Travel AI Assistant ✈️
+# AI Travel Chatbot – RAG & LLM ✈️
 
 ![Deployed App Screenshot](./images/app_screenshot.png)
 
